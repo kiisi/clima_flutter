@@ -25,12 +25,16 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.transparent),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   child: Icon(
                     Icons.arrow_back_ios,
-                    size: 50.0,
+                    size: 30.0,
                   ),
                 ),
               ),
@@ -50,6 +54,10 @@ class _CityScreenState extends State<CityScreen> {
                 onPressed: () {
                   Navigator.pop(context, cityName);
                 },
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.transparent),
+                  ),
                 child: Text(
                   'Get Weather',
                   style: kButtonTextStyle,

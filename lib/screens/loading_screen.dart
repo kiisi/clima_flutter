@@ -14,17 +14,24 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  String? errorMessage;
+
   void getLocationData() async {
-    var weatherData = await WeatherModel().getLocationWeather();
-    print(weatherData);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) {
-        return LocationScreen(
-          locationWeather: weatherData,
-        );
-      }),
-    );
+    try {
+      var weatherData = await WeatherModel().getLocationWeather();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return LocationScreen(
+            locationWeather: weatherData,
+          );
+        }),
+      );
+    } catch (error) {
+      setState(() {
+        errorMessage = '$error';
+      });
+    }
   }
 
   @override
@@ -37,10 +44,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
     getLocationData();
     return Scaffold(
       body: Center(
-        child: SpinKitDoubleBounce(
-          color: Colors.white,
-          size: 100.0,
-        ),
+        child: errorMessage != null
+            ? Text('$errorMessage')
+            : SpinKitDoubleBounce(
+                color: Colors.white,
+                size: 100.0,
+              ),
       ),
     );
   }

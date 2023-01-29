@@ -69,7 +69,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     },
                     child: Icon(
                       Icons.near_me,
-                      size: 50.0,
+                      size: 30.0,
                       color: Colors.white,
                     ),
                   ),
@@ -90,7 +90,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     },
                     child: Icon(
                       Icons.location_city,
-                      size: 50.0,
+                      size: 30.0,
                       color: Colors.white,
                     ),
                   ),
